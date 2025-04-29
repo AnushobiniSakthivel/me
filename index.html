@@ -1,0 +1,685 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Anushobini S - Portfolio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.6.0/remixicon.min.css" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com/3.4.16"></script>
+<script>
+tailwind.config = {
+theme: {
+extend: {
+colors: {
+primary: '#8B5CF6',
+secondary: '#F6E05E'
+},
+borderRadius: {
+'none': '0px',
+'sm': '4px',
+DEFAULT: '8px',
+'md': '12px',
+'lg': '16px',
+'xl': '20px',
+'2xl': '24px',
+'3xl': '32px',
+'full': '9999px',
+'button': '8px'
+}
+}
+}
+}
+</script>
+<style>
+:where([class^="ri-"])::before { content: "\f3c2"; }
+body { 
+  font-family: 'Inter', sans-serif;
+  background-color: #f8f9fa;
+}
+.typing::after {
+  content: "|";
+  animation: blink 1s infinite;
+}
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+.glass-effect {
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+}
+.glass-effect:hover {
+  background: rgba(255, 255, 255, 0.8);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
+}
+.nav-link {
+  position: relative;
+  padding: 0.5rem 1rem;
+  transition: all 0.3s ease;
+}
+.nav-link::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 50%;
+  width: 0;
+  height: 2px;
+  background: linear-gradient(to right, #8B5CF6, #F6E05E);
+  transition: all 0.3s ease;
+  transform: translateX(-50%);
+}
+.nav-link:hover::after {
+  width: 100%;
+}
+.progress-bar {
+  transition: width 1s ease-in-out;
+}
+.project-card {
+  transition: all 0.3s ease;
+  border: 1px solid rgba(139, 92, 246, 0.1);
+}
+.project-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 15px -3px rgba(139, 92, 246, 0.1);
+}
+.scroll-indicator {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 3px;
+  background: linear-gradient(to right, #8B5CF6, #F6E05E);
+  z-index: 1000;
+}
+.section-title {
+  position: relative;
+  display: inline-block;
+  margin-bottom: 2rem;
+}
+.section-title::after {
+  content: '';
+  position: absolute;
+  bottom: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60px;
+  height: 3px;
+  background: linear-gradient(to right, #8B5CF6, #F6E05E);
+  border-radius: 3px;
+}
+.container {
+  max-width: 1280px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+}
+@media (min-width: 1536px) {
+  .container {
+    max-width: 1440px;
+    padding-left: 2rem;
+    padding-right: 2rem;
+  }
+}
+.skill-item {
+  background: rgba(139, 92, 246, 0.05);
+  padding: 1rem;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+.skill-progress {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  background: rgba(139, 92, 246, 0.1);
+  transition: width 1s ease-in-out;
+  z-index: 0;
+}
+.skill-content {
+  position: relative;
+  z-index: 1;
+}
+.skill-item:hover {
+  background: rgba(139, 92, 246, 0.1);
+}
+.contact-form input,
+.contact-form textarea {
+  transition: all 0.3s ease;
+  border: 1px solid rgba(139, 92, 246, 0.2);
+}
+.contact-form input:focus,
+.contact-form textarea:focus {
+  outline: none;
+  border-color: #8B5CF6;
+  box-shadow: 0 0 0 3px rgba(139, 92, 246, 0.1);
+}
+.hero-decoration {
+  position: absolute;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 40%;
+  height: 80%;
+  opacity: 0.7;
+  background: radial-gradient(circle at center, rgba(139, 92, 246, 0.2) 0%, transparent 70%);
+  animation: pulse 4s ease-in-out infinite;
+}
+@keyframes pulse {
+  0%, 100% {
+    transform: translateY(-50%) scale(1);
+    opacity: 0.7;
+  }
+  50% {
+    transform: translateY(-50%) scale(1.1);
+    opacity: 0.5;
+  }
+}
+.hero-shapes {
+  position: absolute;
+  right: 5%;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 30%;
+  height: 60%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 2rem;
+}
+.hero-shape {
+  width: 120px;
+  height: 120px;
+  border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
+  background: linear-gradient(45deg, rgba(139, 92, 246, 0.1), rgba(246, 224, 94, 0.1));
+  animation: float 6s ease-in-out infinite;
+}
+.hero-shape:nth-child(2) {
+  width: 80px;
+  height: 80px;
+  border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
+  animation-delay: -2s;
+}
+.hero-shape:nth-child(3) {
+  width: 100px;
+  height: 100px;
+  border-radius: 30% 60% 70% 40% / 50% 60% 30% 60%;
+  animation-delay: -4s;
+}
+.floating-icons {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 0;
+}
+.floating-icon {
+  position: absolute;
+  opacity: 0.1;
+  transition: all 0.3s ease;
+}
+.floating-icon:hover {
+  opacity: 0.3;
+  transform: scale(1.2);
+}
+@keyframes float-up {
+  0% {
+    transform: translateY(100vh) rotate(0deg);
+  }
+  100% {
+    transform: translateY(-100px) rotate(360deg);
+  }
+}
+@keyframes float-down {
+  0% {
+    transform: translateY(-100px) rotate(0deg);
+  }
+  100% {
+    transform: translateY(100vh) rotate(-360deg);
+  }
+}
+@keyframes float-left {
+  0% {
+    transform: translateX(100vw) rotate(0deg);
+  }
+  100% {
+    transform: translateX(-100px) rotate(360deg);
+  }
+}
+@keyframes float-right {
+  0% {
+    transform: translateX(-100px) rotate(0deg);
+  }
+  100% {
+    transform: translateX(100vw) rotate(-360deg);
+  }
+}
+</style>
+</head>
+<body class="bg-white">
+<div class="floating-icons">
+  <i class="ri-java-line floating-icon" style="font-size: 2rem; top: 10%; left: 15%; animation: float-up 20s linear infinite;"></i>
+  <i class="ri-html5-line floating-icon" style="font-size: 2.5rem; top: 20%; left: 80%; animation: float-down 25s linear infinite;"></i>
+  <i class="ri-css3-line floating-icon" style="font-size: 2.2rem; top: 40%; left: 25%; animation: float-left 22s linear infinite;"></i>
+  <i class="ri-database-2-line floating-icon" style="font-size: 2.3rem; top: 60%; left: 70%; animation: float-right 18s linear infinite;"></i>
+  <i class="ri-pencil-ruler-line floating-icon" style="font-size: 2.4rem; top: 30%; left: 45%; animation: float-up 24s linear infinite;"></i>
+  <i class="ri-code-box-line floating-icon" style="font-size: 2.1rem; top: 50%; left: 85%; animation: float-down 21s linear infinite;"></i>
+  <i class="ri-git-branch-line floating-icon" style="font-size: 2.6rem; top: 70%; left: 30%; animation: float-left 23s linear infinite;"></i>
+  <i class="ri-bug-line floating-icon" style="font-size: 2.3rem; top: 80%; left: 60%; animation: float-right 19s linear infinite;"></i>
+  <i class="ri-terminal-line floating-icon" style="font-size: 2.2rem; top: 15%; left: 55%; animation: float-up 22s linear infinite;"></i>
+  <i class="ri-palette-line floating-icon" style="font-size: 2.5rem; top: 45%; left: 15%; animation: float-down 20s linear infinite;"></i>
+  <i class="ri-shield-check-line floating-icon" style="font-size: 2.4rem; top: 65%; left: 40%; animation: float-left 25s linear infinite;"></i>
+  <i class="ri-cloud-line floating-icon" style="font-size: 2.3rem; top: 25%; left: 75%; animation: float-right 21s linear infinite;"></i>
+</div>
+<div class="scroll-indicator" id="scrollIndicator"></div>
+<header class="fixed top-0 w-full z-50 glass-effect">
+<nav class="container mx-auto px-6 py-4">
+<div class="flex items-center justify-between">
+<div class="text-2xl text-primary font-['Pacifico']">Anu</div>
+<div class="hidden md:flex space-x-8">
+<a href="#about" class="nav-link text-gray-700 hover:text-primary">About</a>
+<a href="#skills" class="nav-link text-gray-700 hover:text-primary">Skills</a>
+<a href="#projects" class="nav-link text-gray-700 hover:text-primary">Projects</a>
+<a href="#achievements" class="nav-link text-gray-700 hover:text-primary">Achievements</a>
+<a href="#contact" class="nav-link text-gray-700 hover:text-primary">Contact</a>
+</div>
+<button class="md:hidden w-10 h-10 flex items-center justify-center">
+<i class="ri-menu-line text-xl"></i>
+</button>
+</div>
+</nav>
+</header>
+<section class="min-h-screen flex items-center relative overflow-hidden">
+<div class="absolute inset-0 -z-10">
+  <div class="absolute inset-0 bg-gradient-radial from-primary/20 to-transparent animate-pulse"></div>
+  <div class="absolute inset-0 bg-[url('https://readdy.ai/api/search-image?query=modern%20minimalist%20abstract%20background%20with%20soft%20gradient%20purple%20and%20gold%20tones%2C%20elegant%20and%20luxurious%20feeling%2C%20perfect%20for%20portfolio%20hero%20section%20background%2C%20ensuring%20text%20readability%20on%20the%20left%20side%20with%20subtle%20glow%20effects&width=1920&height=1080&seq=1&orientation=landscape')] bg-cover bg-center opacity-80"></div>
+  <div class="absolute inset-0 animate-float bg-[url('https://readdy.ai/api/search-image?query=elegant%20abstract%20floating%20geometric%20shapes%2C%20transparent%20with%20subtle%20purple%20and%20gold%20gradients%2C%20perfect%20for%20modern%20portfolio%20overlay&width=1920&height=1080&seq=5&orientation=landscape')] bg-cover bg-center opacity-20"></div>
+</div>
+<div class="absolute inset-0 bg-gradient-to-r from-black/60 to-transparent"></div>
+<div class="hero-decoration"></div>
+<div class="hero-shapes">
+  <div class="hero-shape"></div>
+  <div class="hero-shape"></div>
+  <div class="hero-shape"></div>
+</div>
+<div class="container mx-auto px-6 relative z-10">
+  <div class="max-w-2xl ml-0 md:ml-8 lg:ml-16 text-white">
+    <h1 class="text-5xl md:text-7xl font-bold mb-4">Anushobini S</h1>
+    <div class="text-xl md:text-2xl mb-8 typing" id="typingText">Aspiring Software Engineer & UI/UX Designer</div>
+    <div class="flex gap-4">
+      <a href="#contact" class="bg-primary text-white px-8 py-3 !rounded-button hover:bg-primary/90">Hire Me</a>
+      <a href="resume.pdf" download="resume.pdf" class="border-2 border-white text-white px-8 py-3 !rounded-button hover:bg-white/10">View Resume</a>
+    </div>
+  </div>
+</div>
+</section>
+<section id="about" class="py-20 bg-gray-50">
+<div class="container mx-auto px-6">
+<div class="max-w-3xl mx-auto text-center">
+<h2 class="text-4xl font-bold mb-8">About Me</h2>
+<p class="text-gray-600 leading-relaxed mb-6">
+I'm a passionate Software Engineer and UI/UX Designer based in Erode, Tamil Nadu. With a keen eye for detail and a love for clean, intuitive design, I create digital experiences that merge functionality with aesthetics. My approach combines technical expertise with creative problem-solving to deliver impactful solutions.
+</p>
+<div class="flex items-center justify-center gap-4 text-gray-600">
+<div class="flex items-center gap-2">
+<i class="ri-map-pin-line"></i>
+<span>Erode, Tamil Nadu</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="skills" class="py-20">
+<div class="container mx-auto px-6">
+<h2 class="text-4xl font-bold text-center mb-16 section-title">Skills & Expertise</h2>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+<div class="p-6 rounded-lg bg-white shadow-lg">
+<h3 class="text-xl font-semibold mb-6">Technical Skills</h3>
+<div class="space-y-4">
+<div class="skill-item">
+  <div class="skill-progress" style="width: 90%"></div>
+  <div class="skill-content">
+    <div class="flex justify-between mb-2">
+      <span>Java</span>
+      <span>90%</span>
+    </div>
+    <div class="h-2 bg-gray-200 rounded-full">
+      <div class="h-full w-[90%] bg-primary rounded-full progress-bar"></div>
+    </div>
+  </div>
+</div>
+<div class="skill-item">
+  <div class="skill-progress" style="width: 85%"></div>
+  <div class="skill-content">
+    <div class="flex justify-between mb-2">
+      <span>HTML/CSS</span>
+      <span>85%</span>
+    </div>
+    <div class="h-2 bg-gray-200 rounded-full">
+      <div class="h-full w-[85%] bg-primary rounded-full progress-bar"></div>
+    </div>
+  </div>
+</div>
+<div class="skill-item">
+  <div class="skill-progress" style="width: 80%"></div>
+  <div class="skill-content">
+    <div class="flex justify-between mb-2">
+      <span>MySQL</span>
+      <span>80%</span>
+    </div>
+    <div class="h-2 bg-gray-200 rounded-full">
+      <div class="h-full w-[80%] bg-primary rounded-full progress-bar"></div>
+    </div>
+  </div>
+</div>
+</div>
+</div>
+<div class="p-6 rounded-lg bg-white shadow-lg">
+<h3 class="text-xl font-semibold mb-6">Design Tools</h3>
+<div class="space-y-4">
+<div class="skill-item">
+  <div class="skill-progress" style="width: 95%"></div>
+  <div class="skill-content">
+    <div class="flex justify-between mb-2">
+      <span>Figma</span>
+      <span>95%</span>
+    </div>
+    <div class="h-2 bg-gray-200 rounded-full">
+      <div class="h-full w-[95%] bg-primary rounded-full progress-bar"></div>
+    </div>
+  </div>
+</div>
+<div class="skill-item">
+  <div class="skill-progress" style="width: 90%"></div>
+  <div class="skill-content">
+    <div class="flex justify-between mb-2">
+      <span>Canva</span>
+      <span>90%</span>
+    </div>
+    <div class="h-2 bg-gray-200 rounded-full">
+      <div class="h-full w-[90%] bg-primary rounded-full progress-bar"></div>
+    </div>
+  </div>
+</div>
+</div>
+</div>
+<div class="p-6 rounded-lg bg-white shadow-lg md:col-span-2 lg:col-span-1">
+<h3 class="text-xl font-semibold mb-6">Soft Skills</h3>
+<div class="grid grid-cols-2 gap-4">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center">
+<i class="ri-lightbulb-line text-primary"></i>
+</div>
+<span>Creativity</span>
+</div>
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center">
+<i class="ri-puzzle-line text-primary"></i>
+</div>
+<span>Problem Solving</span>
+</div>
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center">
+<i class="ri-team-line text-primary"></i>
+</div>
+<span>Team Collaboration</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="projects" class="py-20 bg-gray-50">
+<div class="container mx-auto px-6">
+<h2 class="text-4xl font-bold text-center mb-16 section-title">Featured Projects</h2>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+<div class="project-card bg-white rounded-lg shadow-lg overflow-hidden">
+<div class="h-48 bg-gray-200" style="background-image: url('https://readdy.ai/api/search-image?query=modern%20food%20recipe%20app%20interface%20with%20clean%20design%2C%20showing%20recipe%20cards%20and%20ingredients%2C%20professional%20UI%20design%20visualization&width=400&height=300&seq=2&orientation=landscape'); background-size: cover;"></div>
+<div class="p-6">
+<h3 class="text-xl font-semibold mb-2">Food Recipe System</h3>
+<p class="text-gray-600 mb-4">A comprehensive recipe management system with user-friendly interface and search functionality.</p>
+<div class="flex gap-2">
+<span class="px-3 py-1 bg-primary/10 text-primary rounded-full text-sm">Java</span>
+<span class="px-3 py-1 bg-primary/10 text-primary rounded-full text-sm">MySQL</span>
+</div>
+</div>
+</div>
+<div class="project-card bg-white rounded-lg shadow-lg overflow-hidden">
+<div class="h-48 bg-gray-200" style="background-image: url('https://readdy.ai/api/search-image?query=IoT%20water%20overflow%20prevention%20system%20with%20Arduino%20components%20and%20sensors%2C%20modern%20technical%20visualization&width=400&height=300&seq=3&orientation=landscape'); background-size: cover;"></div>
+<div class="p-6">
+<h3 class="text-xl font-semibold mb-2">OverflowGuard</h3>
+<p class="text-gray-600 mb-4">IoT-based water overflow prevention system using Arduino technology.</p>
+<div class="flex gap-2">
+<span class="px-3 py-1 bg-primary/10 text-primary rounded-full text-sm">Arduino</span>
+<span class="px-3 py-1 bg-primary/10 text-primary rounded-full text-sm">IoT</span>
+</div>
+</div>
+</div>
+<div class="project-card bg-white rounded-lg shadow-lg overflow-hidden">
+<div class="h-48 bg-gray-200" style="background-image: url('https://readdy.ai/api/search-image?query=modern%20food%20donation%20web%20application%20interface%20showing%20donation%20listings%20and%20user%20profiles%2C%20professional%20UI%20design&width=400&height=300&seq=4&orientation=landscape'); background-size: cover;"></div>
+<div class="p-6">
+<h3 class="text-xl font-semibold mb-2">Food Fusion</h3>
+<p class="text-gray-600 mb-4">Web platform connecting food donors with those in need.</p>
+<div class="flex gap-2">
+<span class="px-3 py-1 bg-primary/10 text-primary rounded-full text-sm">HTML</span>
+<span class="px-3 py-1 bg-primary/10 text-primary rounded-full text-sm">CSS</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="achievements" class="py-20">
+<div class="container mx-auto px-6">
+<h2 class="text-4xl font-bold text-center mb-16 section-title">Certifications & Achievements</h2>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+<div class="bg-white p-6 rounded-lg shadow-lg">
+<div class="flex items-start gap-4">
+<div class="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center flex-shrink-0">
+<i class="ri-medal-line text-primary text-xl"></i>
+</div>
+<div>
+<h3 class="text-xl font-semibold mb-2">Figma Design Course</h3>
+<p class="text-gray-600">Udemy Certification</p>
+</div>
+</div>
+</div>
+<div class="bg-white p-6 rounded-lg shadow-lg">
+<div class="flex items-start gap-4">
+<div class="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center flex-shrink-0">
+<i class="ri-trophy-line text-primary text-xl"></i>
+</div>
+<div>
+<h3 class="text-xl font-semibold mb-2">I Place - UI Design Workshop</h3>
+<p class="text-gray-600">National Level Competition</p>
+</div>
+</div>
+</div>
+<div class="bg-white p-6 rounded-lg shadow-lg">
+<div class="flex items-start gap-4">
+<div class="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center flex-shrink-0">
+<i class="ri-award-line text-primary text-xl"></i>
+</div>
+<div>
+<h3 class="text-xl font-semibold mb-2">II Place - Web Hunting</h3>
+<p class="text-gray-600">Inter-College Technical Symposium</p>
+</div>
+</div>
+</div>
+<div class="bg-white p-6 rounded-lg shadow-lg">
+<div class="flex items-start gap-4">
+<div class="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center flex-shrink-0">
+<i class="ri-star-line text-primary text-xl"></i>
+</div>
+<div>
+<h3 class="text-xl font-semibold mb-2">Best Co-Curricular Student Award</h3>
+<p class="text-gray-600">Academic Excellence Recognition</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="contact" class="py-20 bg-gray-50">
+<div class="container mx-auto px-6">
+<h2 class="text-4xl font-bold text-center mb-16 section-title">Get in Touch</h2>
+<div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+<div class="space-y-8">
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center">
+<i class="ri-mail-line text-primary"></i>
+</div>
+<div>
+<h3 class="font-semibold">Email</h3>
+<a href="mailto:sanushobini@gmail.com" class="text-gray-600 hover:text-primary">sanushobini@gmail.com</a>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center">
+<i class="ri-phone-line text-primary"></i>
+</div>
+<div>
+<h3 class="font-semibold">Phone</h3>
+<a href="tel:+916380350054" class="text-gray-600 hover:text-primary">+91 6380350054</a>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center">
+<i class="ri-translate-2-line text-primary"></i>
+</div>
+<div>
+<h3 class="font-semibold">Languages</h3>
+<p class="text-gray-600">English, Tamil</p>
+</div>
+</div>
+<div class="flex gap-4">
+<a href="https://github.com/AnushobiniSakthivel" target="_blank" class="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center hover:bg-primary/20">
+<i class="ri-github-line text-primary"></i>
+</a>
+<a href="https://www.linkedin.com/in/anushobini-s-2167292a7" target="_blank" class="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center hover:bg-primary/20">
+<i class="ri-linkedin-line text-primary"></i>
+</a>
+</div>
+</div>
+<form class="space-y-6 contact-form" action="https://formsubmit.co/sanushobini@gmail.com" method="POST">
+  <input type="hidden" name="_captcha" value="false">
+  <input type="hidden" name="_next" value="https://yourdomain.com/thank-you.html">
+  <div>
+    <input type="text" name="name" placeholder="Your Name" class="w-full px-4 py-3 rounded-lg border-none bg-white shadow-sm" required>
+  </div>
+  <div>
+    <input type="email" name="email" placeholder="Your Email" class="w-full px-4 py-3 rounded-lg border-none bg-white shadow-sm" required>
+  </div>
+  <div>
+    <textarea name="message" placeholder="Your Message" rows="4" class="w-full px-4 py-3 rounded-lg border-none bg-white shadow-sm" required></textarea>
+  </div>
+  <button type="submit" class="w-full bg-primary text-white px-6 py-3 !rounded-button hover:bg-primary/90">Send Message</button>
+</form>
+</div>
+</div>
+</section>
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+const scrollIndicator = document.getElementById('scrollIndicator');
+window.addEventListener('scroll', function() {
+const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+const scrolled = (winScroll / height) * 100;
+scrollIndicator.style.width = scrolled + '%';
+});
+});
+document.addEventListener('DOMContentLoaded', function() {
+const text = "Aspiring Software Engineer & UI/UX Designer";
+const typingElement = document.getElementById('typingText');
+let i = 0;
+function typeWriter() {
+if (i < text.length) {
+typingElement.textContent = text.substring(0, i + 1);
+i++;
+setTimeout(typeWriter, 100);
+}
+}
+typeWriter();
+});
+document.addEventListener('DOMContentLoaded', function() {
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const progressBar = entry.target;
+        const width = progressBar.getAttribute('data-width');
+        progressBar.style.width = width;
+      }
+    });
+  }, {
+    threshold: 0.5
+  });
+
+  document.querySelectorAll('.progress-bar').forEach(bar => {
+    bar.style.width = '0';
+    const width = bar.parentElement.parentElement.querySelector('.skill-progress').style.width;
+    bar.setAttribute('data-width', width);
+    observer.observe(bar);
+  });
+});
+</script>
+<style>
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0) scale(1);
+  }
+  50% {
+    transform: translateY(-20px) scale(1.05);
+  }
+}
+.animate-float {
+  animation: float 15s ease-in-out infinite;
+}
+</style>
+<footer class="bg-gray-900 text-white py-12">
+  <div class="container mx-auto px-6">
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-12 mb-8">
+      <div>
+        <h3 class="text-2xl font-['Pacifico'] mb-4">Anu</h3>
+        <p class="text-gray-300">Creating digital experiences that inspire and engage.</p>
+      </div>
+      <div>
+        <h4 class="text-lg font-semibold mb-4 text-gray-100">Quick Links</h4>
+        <ul class="space-y-2">
+          <li><a href="#about" class="text-gray-300 hover:text-white transition-colors">About</a></li>
+          <li><a href="#skills" class="text-gray-300 hover:text-white transition-colors">Skills</a></li>
+          <li><a href="#projects" class="text-gray-300 hover:text-white transition-colors">Projects</a></li>
+          <li><a href="#contact" class="text-gray-300 hover:text-white transition-colors">Contact</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4 class="text-lg font-semibold mb-4 text-gray-100">Connect</h4>
+        <div class="flex gap-4">
+          <a href="https://github.com/AnushobiniSakthivel" target="_blank" class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center hover:bg-gray-700 transition-colors">
+            <i class="ri-github-line"></i>
+          </a>
+          <a href="https://www.linkedin.com/in/anushobini-s-2167292a7" target="_blank" class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center hover:bg-gray-700 transition-colors">
+            <i class="ri-linkedin-line"></i>
+          </a>
+        </div>
+      </div>
+    </div>
+    <div class="border-t border-gray-800 pt-8 text-center text-gray-300">
+      <p>&copy; 2025 Anushobini S. All rights reserved.</p>
+    </div>
+  </div>
+</footer>
+</body>
+</html>
